@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form method="post" action="listacompra.php?option=add">
+
+        <label for ="producto">Producto:</label>
+        <input type="text" name="producto"/>
+
+        <label for="cantidad">Cantidad:</label>
+        <input type="number" name="cantidad"/>
+
+        <button type="submit">Añadir</button>
+        <a href="listacompra.php?option=destroyer">Vaciar Lista</a>
+        <a href="listacompra.php?option=lista">Mostrar Lista</a>
+    </form>
+
+</body>
+</html>
