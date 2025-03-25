@@ -8,10 +8,11 @@ class UserController{
     public function validate(){
         //Llamar a base de datos
         $repository = new UserRepository();
-        $user = $repository->validate($_REQUEST['name'], $_REQUEST['pass']);
+        $user = $repository->validate($_REQUEST['name'], md5($_REQUEST['pass']));
 
         if(isset($user)){
             echo "Usario logueado";
+            header("Location:" . BASE_URL . "/airport/list");
         }
         else{
             echo "Usuario no existe";
