@@ -19,12 +19,20 @@ class UserController
 
         if (isset($user)) {
             $_SESSION['logged'] = true;
+            $_SESSION['name'] = $user->getName();
+
             echo "Usario logueado";
             // header("Location:" . BASE_URL . "/airport/list");
             // Alternativa para redirigir.
-            (new AirportController())->showList();
+            (new AirportController())->welcome();
         } else {
             echo "Usuario no existe";
         }
+    }
+
+    public function destroy()
+    {
+        session_destroy();
+        header("Location:" . BASE_URL . "/user/login");
     }
 }

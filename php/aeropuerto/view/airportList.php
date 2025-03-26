@@ -1,5 +1,6 @@
 <?php
-require_once("repository/airportRepository.php");
+require_once("view/airportHeader.php");
+
 ?>
 <main>
     <table border="1">
@@ -21,4 +22,9 @@ require_once("repository/airportRepository.php");
         </tr>
     </table>
 </main>
+
+<?php
+require_once("view/airportFooter.php");
+
+?>
 
