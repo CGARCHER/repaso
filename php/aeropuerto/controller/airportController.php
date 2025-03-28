@@ -1,15 +1,57 @@
 <?php
 
-    require_once("repository/airportRepository.php");
+require_once("repository/airportRepository.php");
 
-class AirportController {
+class AirportController
+{
+    private $airportRepository;
 
+    public function __construct() {
+        $this->airportRepository = new AirportRepository();
+    }
 
     public function showList()
     {
-        $aeropuerto = (new AirportRepository())->getAll();
+        $aeropuerto = $this->airportRepository->getAll();
         require_once("view/airportList.php");
+    }
+
+    public function showAdd()
+    {
+        require_once("view/airportInsert.php");
+    }
+
+    public function add()
+    {
+        //Recupero los valores del formulario
+        $location =  $_REQUEST['location'];
+        $numRoad =  $_REQUEST['numRoad'];
+        $gateway =  $_REQUEST['gateway'];
+
+        //Compruebo si existe la localización
+        if(!$this->airportRepository->existAirpoirtByLocation($_REQUEST['location'])){
+            $this->insertBD($location, $numRoad, $gateway);
+        }
+        else{
+            //Muestro por pantalla si ya existe la localización
+            $_SESSION['message'] = 'Ya exista la localización ' . $_REQUEST['location'];
+            $this->showAdd();
+        }
+    }
+
+    private function insertBD($location, $numRoad, $gateway){
+        $status = $this->airportRepository->add(
+            $location,
+            $numRoad,
+            $gateway
+        );
         
+        if ($status) {
+            //Redireccionar a mi listado de aeropuerto
+            $_SESSION['message'] 
+                = 'Se ha insertado el aeropuerto ' . $location . ' correctamente';
+            header("Location:" . BASE_URL . "/airport/list");
+        }
     }
 
     public function welcome()
@@ -19,7 +61,3 @@ class AirportController {
         require_once("view/airportFooter.php");
     }
 }
-
-
-
-?>

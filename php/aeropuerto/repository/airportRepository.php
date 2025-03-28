@@ -23,6 +23,27 @@ class AirportRepository {
         return $aeropuerto;
     }
 
+    public function add($location, $numRoad, $gateway){
+
+        $conex = (new ConfigDB())->getInstance();
+        $sql = "INSERT INTO airport(location,numRoad,gateway) values(?,?,?)";
+        $consulta = $conex->prepare($sql);
+        $consulta->bindValue(1,$location);
+        $consulta->bindValue(2,$numRoad);
+        $consulta->bindValue(3,$gateway);
+        return $consulta->execute()>0;
+
+    }
+
+    public function existAirpoirtByLocation($location){
+        $conex = (new ConfigDB())->getInstance();
+        $sql = "SELECT count(location) FROM airport WHERE lower(location) = lower(?)";
+        $consulta = $conex->prepare($sql);
+        $consulta->bindValue(1,$location);
+        $consulta->execute();
+        return $consulta->fetchColumn()>0;
+    }
+
 }
 
 

@@ -8,6 +8,8 @@
     RewriteRule ^user/login$ index.php?controller=UserController&action=showLogin [L]
     RewriteRule ^user/validate$ index.php?controller=UserController&action=validate [L]
     RewriteRule ^airport/list$ index.php?controller=AirportController&action=showList [L]
+    RewriteRule ^airport/showAdd$ index.php?controller=AirportController&action=showAdd [L]
+    RewriteRule ^airport/add$ index.php?controller=AirportController&action=add [L]
     RewriteRule ^user/destroy$ index.php?controller=UserController&action=destroy [L]
 
     #RewriteRule ^libro/listar_libros$ index.php?action=listLibro [L]
