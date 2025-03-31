@@ -15,6 +15,10 @@ else{
 }
 
 $userController = new $controller();
-$userController->$action();
+if($action == "deleteAirport"){
+    $userController->$action($_REQUEST['id']);
+}else{
+    $userController->$action();
+}
 
 ?>

@@ -17,6 +17,7 @@ require_once("view/airportHeader.php");
                 echo "<td>" . $valor->getLocation(). "</td>";
                 echo "<td>" . $valor->getNumRoad(). "</td>";
                 echo "<td>" . $valor->getGateway(). "</td>";
+                echo "<td><a  href='". BASE_URL. "/airport/delete/". $valor->getId()."'>Eliminar</a></td>";
                 echo "</tr>";
             }?>
         </tr>

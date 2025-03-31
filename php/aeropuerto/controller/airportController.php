@@ -60,4 +60,18 @@ class AirportController
         echo "Bienvenido " . $_SESSION['name'] . ", seleccione una opción.";
         require_once("view/airportFooter.php");
     }
+
+    public function deleteAirport($id)
+    {
+        $aeropuerto = $this->airportRepository->findById($id);
+        if(isset($aeropuerto)){
+            if($this->airportRepository->delete($id)){
+                $_SESSION['message'] = 'Aeropuerto '.$aeropuerto->getLocation(). ' Borrado Correctamente';
+            }
+            else{
+                $_SESSION['message'] = 'Error al eliminar el aeropuerto '.$aeropuerto->getLocation();
+            }
+            header("Location:" . BASE_URL . "/airport/list");
+        }
+    }
 }

@@ -44,6 +44,30 @@ class AirportRepository {
         return $consulta->fetchColumn()>0;
     }
 
+    public function delete($id)
+    {
+        $conex = (new ConfigDB())->getInstance();
+        $sql = "DELETE FROM airport WHERE id = ?";
+        $consulta = $conex->prepare($sql);
+        $consulta->bindValue(1,$id);
+        return $consulta->execute()>0;
+    }
+
+    public function findById($id){
+        $conex = (new ConfigDB())->getInstance();
+        $sql = "SELECT * FROM airport WHERE id = ?";
+        $consulta = $conex->prepare($sql);
+        $consulta->bindValue(1,$id);
+        $consulta->execute();
+        $aeropuerto = $consulta->fetch();
+
+        return (!empty($aeropuerto)) ?
+        new Airport($aeropuerto[0],$aeropuerto[1], $aeropuerto[2], $aeropuerto[3]) : null;
+
+
+    }
+
+
 }
 
 
