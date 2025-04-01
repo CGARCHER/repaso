@@ -12,13 +12,17 @@ class AirportController
 
     public function showList()
     {
-        $aeropuerto = $this->airportRepository->getAll();
+        $aeropuertos = $this->airportRepository->getAll();
+        require_once("view/airportHeader.php");
         require_once("view/airportList.php");
+        require_once("view/airportFooter.php");
     }
 
     public function showAdd()
     {
+        require_once("view/airportHeader.php");
         require_once("view/airportInsert.php");
+        require_once("view/airportFooter.php");
     }
 
     public function add()
@@ -74,4 +78,27 @@ class AirportController
             header("Location:" . BASE_URL . "/airport/list");
         }
     }
+    public function showSearch()
+    {
+        require_once("view/airportHeader.php");
+        require_once("view/airportSearch.php");
+        require_once("view/airportFooter.php");
+    }
+
+    public function search()
+    {
+        $location = $_REQUEST['location'];
+        $aeropuertos = $this->airportRepository->findByLocation($location); 
+        
+        if(empty($aeropuertos)){
+            $_SESSION['message'] = 'No se ha encontrado aeropuerto con Location = '.$location;
+        }
+        
+        require_once("view/airportHeader.php");
+        require_once("view/airportSearch.php");
+        require_once("view/airportList.php");
+        require_once("view/airportFooter.php");
+
+    }
+
 }

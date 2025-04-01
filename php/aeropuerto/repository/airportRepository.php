@@ -11,7 +11,6 @@ class AirportRepository {
 
         $sql = "SELECT * FROM airport";
         $consulta = $conex->prepare($sql);
-
         $consulta->execute();
         $listado = $consulta->fetchAll();
         $aeropuerto = [];
@@ -63,8 +62,23 @@ class AirportRepository {
 
         return (!empty($aeropuerto)) ?
         new Airport($aeropuerto[0],$aeropuerto[1], $aeropuerto[2], $aeropuerto[3]) : null;
+    }
 
-
+    public function findByLocation($location){
+        $conex = (new ConfigDB())->getInstance();
+        $nombre = '%'.$location.'%';
+        $sql = "SELECT * FROM airport WHERE lower(location) like lower(?)";
+        $consulta = $conex->prepare($sql);
+        $consulta->bindValue(1,$nombre);
+        $consulta->execute();
+        $listado = $consulta->fetchAll();
+        $aeropuerto = [];
+        
+        foreach ($listado as $registro) {
+            // También se puede poner con $registro["nombreCampoBD"].
+            $aeropuerto[] = new Airport($registro[0],$registro[1], $registro[2], $registro[3]);
+        }
+        return $aeropuerto;
     }
 
 

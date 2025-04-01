@@ -1,7 +1,3 @@
-
-<?php
-require_once("view/airportHeader.php");
-?>
 <main>
     <form action="<?= BASE_URL?>/airport/add" method="post">
         <label for="location">Location:</label>
@@ -17,8 +13,3 @@ require_once("view/airportHeader.php");
 
     </form>
 </main>
-
-<?php
-require_once("view/airportFooter.php");
-
-?>

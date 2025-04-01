@@ -1,7 +1,3 @@
-<?php
-require_once("view/airportHeader.php");
-
-?>
 <main>
     <table border="1">
         <tr>
@@ -11,7 +7,7 @@ require_once("view/airportHeader.php");
             <th>GateWay</th>
         </tr>
         
-            <?php foreach ($aeropuerto as $valor) {
+            <?php foreach ($aeropuertos as $valor) {
                 echo "<tr>";
                 echo "<td>" . $valor->getId(). "</td>";
                 echo "<td>" . $valor->getLocation(). "</td>";
@@ -23,9 +19,3 @@ require_once("view/airportHeader.php");
         </tr>
     </table>
 </main>
-
-<?php
-require_once("view/airportFooter.php");
-
-?>
-
