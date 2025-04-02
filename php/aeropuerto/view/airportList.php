@@ -14,6 +14,7 @@
                 echo "<td>" . $valor->getNumRoad(). "</td>";
                 echo "<td>" . $valor->getGateway(). "</td>";
                 echo "<td><a  href='". BASE_URL. "/airport/delete/". $valor->getId()."'>Eliminar</a></td>";
+                echo "<td><a  href='". BASE_URL. "/airport/showUpdate/". $valor->getId()."'>Editar</a></td>";
                 echo "</tr>";
             }?>
         </tr>

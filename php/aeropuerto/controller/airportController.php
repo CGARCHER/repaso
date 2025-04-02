@@ -101,4 +101,38 @@ class AirportController
 
     }
 
+    public function showUpdateAirport($id)
+    {
+        $aeropuerto = $this->airportRepository->findById($id);
+        require_once("view/airportHeader.php");
+        require_once("view/airportUpdate.php");
+        require_once("view/airportFooter.php");
+    }
+
+    public function updateAirport(){
+
+        //Recupero los valores del formulario
+        $id =  $_REQUEST['id'];
+        $location =  $_REQUEST['location'];
+        $numRoad =  $_REQUEST['numRoad'];
+        $gateway =  $_REQUEST['gateway'];
+
+        $status = $this->airportRepository->update($id, $location, $numRoad, $gateway);
+
+        
+        if ($status) {
+            //Redireccionar a mi listado de aeropuerto
+            $_SESSION['message'] 
+                = 'Se ha actualizado el aeropuerto ' . $location . ' correctamente';
+            header("Location:" . BASE_URL . "/airport/list");
+        }
+        else{
+            //Fallo, me quedo en el formulario de actualizar
+            $_SESSION['message'] 
+            = 'No se ha actualizado el aeropuerto ' . $location . ' correctamente';
+            $this->showUpdateAirport($id);
+        }
+
+    }
+
 }

@@ -82,6 +82,19 @@ class AirportRepository {
     }
 
 
+    public function update($id, $location, $numRoad, $gateway){ 
+        $conex = (new ConfigDB())->getInstance();
+        $sql = "UPDATE airport SET location=?, numRoad=?, gateway=? WHERE id=?";
+        $consulta = $conex->prepare($sql);
+        $consulta->bindValue(1,$location);
+        $consulta->bindValue(2,$numRoad);
+        $consulta->bindValue(3,$gateway);
+        $consulta->bindValue(4,$id);
+        return $consulta->execute()>0;
+    }
+
+
+
 }
 
 
