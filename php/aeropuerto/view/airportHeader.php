@@ -13,6 +13,7 @@
                 <li><a href="<?= BASE_URL ?>/airport/list">Lista de Aeropuertos</a></li>
                 <li><a href="<?= BASE_URL ?>/airport/showAdd">Insertar</a></li>
                 <li><a href="<?= BASE_URL ?>/airport/showSearch">Busca el aeropuerto por localización</a></li>
+                <li><a href="<?= BASE_URL ?>/airport/showImport">Importar</a></li>
             </ul>
         </nav>
     </header>

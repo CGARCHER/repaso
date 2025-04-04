@@ -1,0 +1,18 @@
+<IfModule mod_rewrite.c>
+    Options +FollowSymLinks
+    RewriteEngine On
+
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+	
+    #RewriteRule ^libro/listar_libros$ index.php?action=listLibro [L]
+    #RewriteRule ^user/logout$ index.php?controller=UserController&action=logout [L]
+    #Forma generica para las 4 opciones
+    #RewriteRule ^([a-zA-Z]+)[/]?$ index.php?action=$1 [L]
+</IfModule>
+
+# Flag: [L]
+# Stop the rewriting process immediately and don't apply any more rules.
+
+# Referencia:
+# - https://httpd.apache.org/docs/current/mod/mod_rewrite.html

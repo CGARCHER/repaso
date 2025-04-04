@@ -1,0 +1,3 @@
+madrid,22,33
+murcia,11,44
+albacete,33,22

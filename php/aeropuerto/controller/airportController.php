@@ -137,4 +137,24 @@ class AirportController
 
     }
 
+    public function showImport(){
+        require_once("view/airportHeader.php");
+        require_once("view/airportImport.php");
+        require_once("view/airportFooter.php");
+    }
+
+    public function import(){
+        $file = $_FILES['file'];
+        $contenido = file_get_contents($file['tmp_name']);
+        $aeropuertos = explode("\n", $contenido);
+        foreach ($aeropuertos as $value) {
+            $datos_aeropuerto = explode(",", $value);
+            print_r($datos_aeropuerto);
+            $this->airportRepository->add($datos_aeropuerto[0],
+                        $datos_aeropuerto[1], $datos_aeropuerto[2]);
+        }
+        header("Location:" . BASE_URL . "/airport/list");
+
+    }
+
 }
