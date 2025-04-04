@@ -65,8 +65,9 @@ class AirportController
         require_once("view/airportFooter.php");
     }
 
-    public function deleteAirport($id)
+    public function deleteAirport()
     {
+        $id = $_REQUEST['id'];
         $aeropuerto = $this->airportRepository->findById($id);
         if(isset($aeropuerto)){
             if($this->airportRepository->delete($id)){
@@ -101,8 +102,9 @@ class AirportController
 
     }
 
-    public function showUpdateAirport($id)
+    public function showUpdateAirport()
     {
+        $id = $_REQUEST['id'];
         $aeropuerto = $this->airportRepository->findById($id);
         require_once("view/airportHeader.php");
         require_once("view/airportUpdate.php");
