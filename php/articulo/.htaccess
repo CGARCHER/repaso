@@ -8,8 +8,18 @@
     RewriteRule ^user/showLogin$ index.php?controller=UserController&action=showLogin [L]
     RewriteRule ^user/login$ index.php?controller=UserController&action=validate [L]
     RewriteRule ^user/destroy$ index.php?controller=UserController&action=destroy [L]
+
+
+
+
+
     RewriteRule ^articulo/welcome$ index.php?controller=ArticuloController&action=welcome [L]
     RewriteRule ^articulo/list$ index.php?controller=ArticuloController&action=showList [L]
+    RewriteRule ^articulo/showActualizar$ index.php?controller=ArticuloController&action=showActualizar [L]
+    RewriteRule ^articulo/delete/([0-9]+)$ index.php?controller=ArticuloController&action=delete&id=$1 [L]
+    RewriteRule ^articulo/update$ index.php?controller=ArticuloController&action=update [L]
+    RewriteRule ^articulo/showImportar$ index.php?controller=ArticuloController&action=showImportar [L]
+    RewriteRule ^articulo/importar$ index.php?controller=ArticuloController&action=importar [L]
 	
     #RewriteRule ^libro/listar_libros$ index.php?action=listLibro [L]
     #RewriteRule ^user/logout$ index.php?controller=UserController&action=logout [L]
