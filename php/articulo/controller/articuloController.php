@@ -59,9 +59,9 @@ class ArticuloController
     public function importar()
     {
         $repository = new ArticleRepository();
+        
         $articulos = explode("\n", $_REQUEST['import']);
-        // trim elimina espacios delante y detrás, NO entre las palabras de la frase/línea.
-        foreach ($articulos as $value) {
+         foreach ($articulos as $value) {
             $articulo = explode(",", $value);
             if ($repository->verify(trim($articulo[0]))) {
                 echo "Ya existe, merluzo";
