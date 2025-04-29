@@ -8,7 +8,7 @@ class Order extends Model
 {
     protected $fillable = [
         'name',
-        'email',
+        'used',
     ];
 
     protected $casts = [
