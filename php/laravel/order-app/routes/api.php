@@ -14,3 +14,4 @@ Route::get('/hello', function () {
 
 Route::get('/orders', [OrderController::class, 'index']);
 Route::post('/create',[OrderController::class, 'create']);
+Route::get('/order/{id}',[OrderController::class, 'get']);

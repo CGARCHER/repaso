@@ -26,4 +26,8 @@ class OrderController extends Controller
         return ApiResponse::success($order,'order created',201);
     }
 
+    public function get($id){
+        $order = $this->orderService->get($id);
+        return ApiResponse::success($order,'order found');
+    }
 }

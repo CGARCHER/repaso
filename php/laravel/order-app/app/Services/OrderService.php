@@ -2,8 +2,10 @@
 
 namespace App\Services;
 
+use App\Exceptions\OrderNotFoundException;
 use App\Models\Order;
 use App\Repositories\OrderRepository;
+use Illuminate\Http\Response;
 
 class OrderService{
 
@@ -24,5 +26,15 @@ class OrderService{
         //$order->used = $params['used'];
         $order->fill($params);
         return $this->orderRepository->create($order);
+    }
+
+    public function get($id){
+        $order = $this->orderRepository->get($id);
+
+        if(!$order){
+            throw new OrderNotFoundException(Response::HTTP_NOT_FOUND, "No existe un pedido con id {$id}");
+        }
+
+        return $order;
     }
 }

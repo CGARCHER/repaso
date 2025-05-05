@@ -1,5 +1,7 @@
 <?php
 
+use App\Exceptions\OrderNotFoundException;
+use App\Helpers\ApiResponse;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -12,12 +14,11 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        //
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        /*
-		 $exceptions->render(function (BookNotFoundException $exception){
-            return ApiResponse::error('',$exception->getMessage(), $exception->getCode());
+        
+		 $exceptions->render(function (OrderNotFoundException $exception){
+            return ApiResponse::error($exception->getMessage(),$exception->getMessage(), $exception->getCode());
         });
-		*/
+
     })->create();

@@ -13,4 +13,8 @@ class OrderRepository{
     public function create(Order $order){
         return $order->save();
     }
+
+    public function get($id){
+        return Order::find($id);
+    }
 }
