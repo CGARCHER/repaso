@@ -16,4 +16,8 @@ class Order extends Model
     ];
     
     protected $table="order";
+
+    function transport(){
+        return $this->belongsTo(Transport::class);
+    }
 }

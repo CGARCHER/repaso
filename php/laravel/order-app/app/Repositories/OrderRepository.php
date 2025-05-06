@@ -10,6 +10,10 @@ class OrderRepository{
         return Order::all();
     }
 
+    public function allWithTransport(){
+        return Order::with('transport')->get();
+    }
+
     public function create(Order $order){
         return $order->save();
     }

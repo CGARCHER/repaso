@@ -5,19 +5,30 @@ namespace App\Services;
 use App\Exceptions\OrderNotFoundException;
 use App\Models\Order;
 use App\Repositories\OrderRepository;
+use App\Repositories\TransportRepository;
 use Illuminate\Http\Response;
 
 class OrderService{
 
     private $orderRepository;
+    private $transportRepository;
 
-    public function __construct(OrderRepository $orderRepository)
+    public function __construct(OrderRepository $orderRepository, TransportRepository $transportRepository)
     {
         $this->orderRepository = $orderRepository;
+        $this->transportRepository = $transportRepository;
     }
 
     public function all(){
         return $this->orderRepository->all();
+    }
+
+    public function allWithTransport(){
+        return $this->orderRepository->allWithTransport();
+    }
+
+    public function allTransportWithOrder(){
+        return $this->transportRepository->allWithOrder();
     }
 
     public function create($params){

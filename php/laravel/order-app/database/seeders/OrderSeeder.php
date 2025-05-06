@@ -16,16 +16,19 @@ class OrderSeeder extends Seeder
         $order1 = new Order();
         $order1->name = "Teclado";
         $order1->used = true;
+        $order1->transport_id = 1;
         $order1->save();
 
         $order1 = new Order();
         $order1->name = "Ratón";
         $order1->used = false;
+        $order1->transport_id = 2;
         $order1->save();
 
         $order1 = new Order();
         $order1->name = "Monitor";
         $order1->used = false;
+        $order1->transport_id = 1;
         $order1->save();
 
     }

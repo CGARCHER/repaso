@@ -20,6 +20,19 @@ class OrderController extends Controller
         return ApiResponse::success($orders,'orders retrieved successfully');
     }
 
+    public function indexComplete()
+    {
+        $orders = $this->orderService->allWithTransport();
+        return ApiResponse::success($orders,'orders retrieved successfully');
+    }
+
+    
+    public function getAllTransportWithOrder()
+    {
+        $orders = $this->orderService->allTransportWithOrder();
+        return ApiResponse::success($orders,'transports retrieved successfully');
+    }
+
     public function create(CreateOrderRequest $createOrderRequest){
         $params =  $createOrderRequest->all();
         $order = $this->orderService->create($params);
